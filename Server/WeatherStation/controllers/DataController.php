@@ -24,7 +24,7 @@ class DataController extends Controller
 	fclose($logFile);
     }
 
-    public function actionGet()
+    public function actionShow()
     {
 	$logPath = realpath(Yii::$app->basePath . '/../dataLog');
 	$jsonArray = file($logPath);
@@ -32,6 +32,7 @@ class DataController extends Controller
 	{
 	    $jsonData = json_decode($line, true);
 	    var_dump($jsonData);
+	    echo '<br>';
 	}
     }
 }
