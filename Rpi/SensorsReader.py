@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
+from config import *
 import sys
 import json
 import urllib2
 import Adafruit_DHT
+import Adafruit_BMP.BMP085 as BMP085
 
 
 def readHumidityTemp(sensor, pin):
@@ -19,6 +21,19 @@ def readHumidityTemp(sensor, pin):
     return Adafruit_DHT.read_retry(sensor, pin)
 
 
+def readBarometerData(_busnum):
+    '''
+    Returns pressure and altitude read from raspberry pi.
+
+    Return: tuple
+    '''
+    barometer = BMP085.BMP085(busnum=_busnum)
+    pressure = barometer.read_pressure()
+    altitude = barometer.read_altitude()
+    sealevel_pressure = barometer.read_sealevel_pressure()
+
+    return (pressure, altitude, sealevel_pressure)
+
 def sendToServer(data, url):
     '''
     Sends humidity and temperature data to the server as a json string.
@@ -27,21 +42,26 @@ def sendToServer(data, url):
         data -- Humidity and temperature tuple.
         url -- Url of request to save data.
     '''
-    jsonData = json.dumps({'humidity': data[0], 'temp': data[1]})
+    jsonData = json.dumps({'humidity': data[0], 'temp': data[1], 'pressure': data[2], 'altitude': data[3], 'sealevel_pressure': data[4]})
     url += urllib2.quote(jsonData)
     print url
-    url = 'http://markalab.org'
     urllib2.urlopen(url)
 
 
 def checkArgs():
+    '''
+    Validates command line arguments.
+    '''
     if len(sys.argv) < 2:
-        print 'Usage: python SensorsReader.py pin_number'
+        print argsErrorString
         sys.exit(-1)
     try:
         int(sys.argv[1])
+        if len(sys.argv) <= 3:
+            int(sys.argv[2])
+            bus_num = sys.argv[2]
     except ValueError:
-        print 'Usage: python SensorsReader.phy pin_number'
+        print argsErrorString
         sys.exit(-1)
 
 
@@ -49,6 +69,8 @@ if __name__ == '__main__':
     checkArgs()
     PIN = sys.argv[1]
     SENSOR = Adafruit_DHT.DHT22
-    URL = 'http://weatherstation/index.php/save/'
+    URL = baseUrl + 'save/'
 
-    sendToServer(readHumidityTemp(SENSOR, PIN), URL)
+    dataTuple = readHumidityTemp(SENSOR, PIN) + readBarometerData(bus_num)
+
+    sendToServer(dataTuple, URL)
