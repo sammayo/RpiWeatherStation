@@ -28,11 +28,29 @@ class DataController extends Controller
     {
 	$logPath = realpath(Yii::$app->basePath . '/../dataLog');
 	$jsonArray = file($logPath);
+        $pointsArray = [];
+        $humidityArray = [[]];
+        $temperatureArray = [[]];
 	foreach($jsonArray as $line_num => $line)
 	{
 	    $jsonData = json_decode($line, true);
-	    var_dump($jsonData);
-	    echo '<br>';
-	}
+	    //var_dump($jsonData);
+	    //echo '<br>';
+
+            $date = $jsonData['date'];
+
+
+            $humidityArray[$line_num][0] = $jsonData['date'];
+            $humidityArray[$line_num][1] = $jsonData['humidity'];
+
+            $temperatureArray[$line_num][0] = $jsonData['date'];
+            $temperatureArray[$line_num][1] = $jsonData['temp'];
+        }
+        array_push($pointsArray, $humidityArray, $temperatureArray);
+        //var_dump($pointsArray);
+        $js_array = json_encode($pointsArray);
+        //echo '<br><br><br>';
+        //var_dump($js_array);
+        return $this->render('plot', ['pointsArray' => $pointsArray]);
     }
 }

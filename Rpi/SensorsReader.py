@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from config import *
+from datetime import datetime
 import sys
 import json
 import urllib2
@@ -39,10 +40,12 @@ def sendToServer(data, url):
     Sends humidity and temperature data to the server as a json string.
     
     Arguments:
-        data -- Humidity and temperature tuple.
+        data -- Humidity, temperature, and barometer data tuple.
         url -- Url of request to save data.
     '''
-    jsonData = json.dumps({'humidity': data[0], 'temp': data[1], 'pressure': data[2], 'altitude': data[3], 'sealevel_pressure': data[4]})
+    time = datetime.now()
+    date = time.strftime("%y-%m-%d")
+    jsonData = json.dumps({'date:': date,'humidity': data[0], 'temp': data[1], 'pressure': data[2], 'altitude': data[3], 'sealevel_pressure': data[4]})
     url += urllib2.quote(jsonData)
     print url
     urllib2.urlopen(url)
