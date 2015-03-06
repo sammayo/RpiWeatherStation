@@ -30,17 +30,12 @@ class DataController extends Controller
 
         $logPath = realpath(Yii::$app->basePath . '/../dataLog');
         $jsonArray = file($logPath);
-        $sensorData = [[]];
         $humidity = '[';
         $temperature = '[';
         foreach($jsonArray as $line_num => $line)
         {
             $jsonData = json_decode($line, true);
-            
             $date = $jsonData['date'];
-
-            $sensorData[$line_num][0] = $jsonData['date'];
-            $sensorData[$line_num][1] = $jsonData['humidity'];
             $humidity .= '[' . $jsonData['date'] . ', ' . $jsonData['humidity'] . '], ';
             $temperature .= '[' . $jsonData['date'] . ', ' . $jsonData['temp'] . '], ';
             $temperatureArray[$line_num][2] = $jsonData['temp'];
