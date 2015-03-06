@@ -59,7 +59,7 @@ def sendToServer(data, url):
 
 if __name__ == '__main__':
     TEMP_HUMIDITY_PIN = config.temp_humidity_pin
-    BAROMETER_BUS_NUM = config.barometer_pin
+    BAROMETER_BUS_NUM = config.barometer_bus_num
     URL = config.base_url + 'save/'
 
     dataTuple = readHumidityTemp(TEMP_HUMIDITY_PIN) + readBarometerData(BAROMETER_BUS_NUM)
