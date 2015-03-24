@@ -29,6 +29,7 @@ AppAsset::register($this);
 <script type="text/javascript" src="/assets/jqplot/jquery.jqplot.min.js"></script>
 <script type="text/javascript" src="/assets/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
 <script type="text/javascript" src="/assets/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script type="text/javascript" src="/assets/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
 </body>
 </html>
 <?php $this->endPage() ?>
