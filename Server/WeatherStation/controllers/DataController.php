@@ -37,10 +37,8 @@ class DataController extends Controller
         fclose($logFile);
     }
 
-    public function actionShow()
+    protected function loadDynamicData()
     {
-        $this->layout = 'data_plot';
-
         $logPath = realpath(Yii::$app->basePath . '/../dynamicDataLog');
         $jsonArray = file($logPath);
         $humidity = '[';
@@ -72,10 +70,38 @@ class DataController extends Controller
             $pressure .= '[]';
         $pressure .= ']';
 
-        return $this->render('plot', [
+        return [
             'humidity_data' => $humidity,
             'temperature_data' => $temperature,
             'pressure_data' => $pressure
-        ]);
+        ];
+    }
+
+    protected function loadStaticData()
+    {
+        $logPath = realpath(Yii::$app->basePath . '/../staticDataLog');
+        $jsonArray = file($logPath);
+
+        $jsonData = json_decode($jsonArray[0], true);
+        $altitude = $jsonData['altitude'];
+        $sealevelPressure = $jsonData['sealevel_pressure'];
+
+        return [
+            'altitude_data' => $altitude,
+            'sealevel_pressure_data' => $sealevelPressure
+        ];
+    }
+
+    public function actionShow()
+    {
+        $this->layout = 'data_plot';
+
+        return $this->render(
+            'plot',
+            array_merge(
+                $this->loadStaticData(),
+                $this->loadDynamicData()
+            )
+        );
     }
 }

@@ -1,6 +1,26 @@
 <?php
 //use Yii;
 ?>
+
+<table style="collapse: collapse; border: 1px">
+    <tr>
+        <th>
+            ALTITUDE
+        </th>
+        <th>
+            SEALEVEL PRESSURE
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <?php echo $altitude_data; ?>
+        </td>
+        <td>
+            <?php echo $sealevel_pressure_data; ?>
+        </td>
+    </tr>
+</table>
+
 <div id="tempPlotDiv" style="height:400px;width:1000px;"></div>
 <div id="humidityPlotDiv" style="height:400px;width:1000px;"></div>
 <div id="pressurePlotDiv" style="height:400px;width:1000px;"></div>

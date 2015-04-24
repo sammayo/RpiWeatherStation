@@ -1,0 +1,3 @@
+* Remove index.php part of the URL - replace with pretty URL
+* RESTful API posting of data via POST method
+* Down the road, check that incoming data is actually of JSON format and contains valid parameters
