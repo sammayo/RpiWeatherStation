@@ -7,6 +7,8 @@ use yii\web\Controller;
 
 class DataController extends Controller
 {
+    public $enableCsrfValidation = false;
+
     public function actionSavedynamic()
     {
         $jsonData = Yii::$app->request->get('data');
@@ -19,7 +21,7 @@ class DataController extends Controller
 
     public function actionSavestatic()
     {
-        $jsonData = Yii::$app->request->get('data');
+        $jsonData = Yii::$app->request->post('data');
         $logPath = realpath(Yii::$app->basePath . '/../staticDataLog');
         $logFile = fopen($logPath, 'w');
         fwrite($logFile, $jsonData);

@@ -1,3 +1,7 @@
 * Remove index.php part of the URL - replace with pretty URL
 * RESTful API posting of data via POST method
 * Down the road, check that incoming data is actually of JSON format and contains valid parameters
+* Show proper content when there are no data in dynamic data log file
+* The file dynamicDataLog and staticDataLog should be created if they don't exist
+
+* We can test the POST call like this: curl --data-urlencode 'data={"altitude":"90","sealevel_pressure":"943"}' http://rpiweatherstation/savestatic
