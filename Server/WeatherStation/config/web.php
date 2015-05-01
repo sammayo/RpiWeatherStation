@@ -38,12 +38,14 @@ $config = [
             ],
         ],
 	'urlManager' => [
+        'class' => 'yii\web\UrlManager',
 	    'enablePrettyUrl' => true,
 	    'showScriptName' => false,
 	    'enableStrictParsing' => true,
 	    'rules' => [
             'savedynamic/<data>' => 'data/savedynamic',
-    		'savestatic/<data>' => 'data/savestatic',
+            // 'savestatic/<data>' => 'data/savestatic',
+    		'savestatic' => 'data/savestatic',
     		'reset' => 'data/reset',
     		'show' => 'data/show',
     		'/' => 'site/index',
