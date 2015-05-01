@@ -11,7 +11,7 @@ class DataController extends Controller
 
     public function actionSavedynamic()
     {
-        $jsonData = Yii::$app->request->get('data');
+        $jsonData = Yii::$app->request->post('data');
         $logPath = realpath(Yii::$app->basePath . '/../dynamicDataLog');
         $logFile = fopen($logPath, 'a');
         fwrite($logFile, $jsonData);

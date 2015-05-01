@@ -4,9 +4,9 @@ import config
 from datetime import datetime
 import time
 import json
-import urllib2
-import Adafruit_DHT
-import Adafruit_BMP.BMP085 as BMP085
+import urllib2, urllib
+#import Adafruit_DHT
+#import Adafruit_BMP.BMP085 as BMP085
 
 
 def readHumidityTemp(pin):
@@ -16,7 +16,7 @@ def readHumidityTemp(pin):
     Arguments:
         pin -- RPi GPIO pin over which the sensor data is sent.
 
-    Return: tuple
+    Return: tuple (humidity, temperature)
     '''
     sensor = Adafruit_DHT.DHT22
     return Adafruit_DHT.read_retry(sensor, pin)
@@ -25,7 +25,7 @@ def readBarometerData(busnum):
     '''
     Returns pressure and altitude read from raspberry pi.
 
-    Return: tuple
+    Return: tuple (pressure, altitude, sealevel_pressure)
     '''
     barometer = BMP085.BMP085(busnum)
     pressure = barometer.read_pressure()
@@ -47,8 +47,8 @@ def sendStaticData(data, url):
         'altitude': data[3],
         'sealevel_pressure': data[4]
     })
-    url += urllib2.quote(jsonData)
-    urllib2.urlopen(url)
+    jsonData = urllib.urlencode({'data': jsonData})
+    urllib2.urlopen(url, data = jsonData)
 
 
 def sendDynamicData(data, url):
@@ -67,22 +67,22 @@ def sendDynamicData(data, url):
         'temp': data[1],
         'pressure': data[2]
     })
-    url += urllib2.quote(jsonData)
-    urllib2.urlopen(url)
+    jsonData = urllib.urlencode({'data': jsonData})
+    urllib2.urlopen(url, data = jsonData)
 
 
 if __name__ == '__main__':
     TEMP_HUMIDITY_PIN = config.temp_humidity_pin
     BAROMETER_BUS_NUM = config.barometer_bus_num
     
-    SAVE_DYNAMIC_URL = config.base_url + 'savedynamic/'
-    SAVE_STATIC_URL = config.base_url + 'savestatic/'
+    SAVE_DYNAMIC_URL = config.base_url + 'savedynamic'
+    SAVE_STATIC_URL = config.base_url + 'savestatic'
     
     dataTuple = readHumidityTemp(TEMP_HUMIDITY_PIN) + readBarometerData(BAROMETER_BUS_NUM)
     
-    sendStaticData(dataTuple, SAVE_STATIC_URL)
+    print sendStaticData(dataTuple, SAVE_STATIC_URL)
     
     while True:
-        sendDynamicData(dataTuple, SAVE_DYNAMIC_URL)
-        time.pause(config.readout_interval_secs)
+        print sendDynamicData(dataTuple, SAVE_DYNAMIC_URL)
+        time.sleep(config.readout_interval_secs)
         dataTuple = readHumidityTemp(TEMP_HUMIDITY_PIN) + readBarometerData(BAROMETER_BUS_NUM)

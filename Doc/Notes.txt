@@ -3,5 +3,6 @@
 * Down the road, check that incoming data is actually of JSON format and contains valid parameters
 * Show proper content when there are no data in dynamic data log file
 * The file dynamicDataLog and staticDataLog should be created if they don't exist
+* Ensure the data in the dynamic data is in the desired format
 
 * We can test the POST call like this: curl --data-urlencode 'data={"altitude":"90","sealevel_pressure":"943"}' http://rpiweatherstation/savestatic
