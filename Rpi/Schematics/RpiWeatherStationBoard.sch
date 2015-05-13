@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="7.2.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -4083,7 +4083,6 @@ W = angled&lt;p&gt;
 <part name="GND5" library="SparkFun" deviceset="GND" device=""/>
 <part name="SUPPLY1" library="SparkFun-Aesthetics" deviceset="5V" device=""/>
 <part name="SUPPLY2" library="SparkFun-Aesthetics" deviceset="3.3V" device=""/>
-<part name="GND7" library="SparkFun" deviceset="GND" device=""/>
 <part name="C5V" library="SparkFun-Capacitors" deviceset="10UF-25V-20%(PTH)" device="KIT" value="10uf"/>
 <part name="C3V" library="SparkFun-Capacitors" deviceset="10UF-25V-20%(PTH)" device="KIT" value="10uf"/>
 <part name="GND4" library="SparkFun" deviceset="GND" device=""/>
@@ -4106,7 +4105,6 @@ W = angled&lt;p&gt;
 <instance part="GND5" gate="1" x="30.48" y="40.64"/>
 <instance part="SUPPLY1" gate="G$1" x="30.48" y="99.06"/>
 <instance part="SUPPLY2" gate="G$1" x="25.4" y="99.06"/>
-<instance part="GND7" gate="1" x="116.84" y="40.64"/>
 <instance part="C5V" gate="G$1" x="157.48" y="-2.54"/>
 <instance part="C3V" gate="G$1" x="172.72" y="-2.54"/>
 <instance part="GND4" gate="1" x="157.48" y="-12.7"/>
@@ -4124,16 +4122,12 @@ W = angled&lt;p&gt;
 <nets>
 <net name="GND" class="0">
 <segment>
-<pinref part="JP8" gate="JP1" pin="GND@6"/>
-<wire x1="33.02" y1="55.88" x2="30.48" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="30.48" y1="55.88" x2="30.48" y2="53.34" width="0.1524" layer="91"/>
 <pinref part="JP8" gate="JP1" pin="GND@9"/>
 <wire x1="30.48" y1="53.34" x2="30.48" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="30.48" y1="50.8" x2="30.48" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="30.48" y1="48.26" x2="30.48" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="30.48" y1="45.72" x2="30.48" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="33.02" y1="53.34" x2="30.48" y2="53.34" width="0.1524" layer="91"/>
-<junction x="30.48" y="53.34"/>
 <pinref part="JP8" gate="JP1" pin="GND@14"/>
 <wire x1="33.02" y1="50.8" x2="30.48" y2="50.8" width="0.1524" layer="91"/>
 <junction x="30.48" y="50.8"/>
@@ -4144,6 +4138,16 @@ W = angled&lt;p&gt;
 <wire x1="33.02" y1="45.72" x2="30.48" y2="45.72" width="0.1524" layer="91"/>
 <junction x="30.48" y="45.72"/>
 <pinref part="GND5" gate="1" pin="GND"/>
+<pinref part="JP8" gate="JP1" pin="GND@6"/>
+<wire x1="33.02" y1="55.88" x2="30.48" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="55.88" x2="30.48" y2="53.34" width="0.1524" layer="91"/>
+<junction x="30.48" y="53.34"/>
+<wire x1="30.48" y1="45.72" x2="20.32" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="20.32" y1="45.72" x2="20.32" y2="33.02" width="0.1524" layer="91"/>
+<pinref part="U1" gate="G$1" pin="GND"/>
+<wire x1="121.92" y1="50.8" x2="116.84" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="20.32" y1="33.02" x2="116.84" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="33.02" x2="116.84" y2="50.8" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C3V" gate="G$1" pin="-"/>
@@ -4154,12 +4158,6 @@ W = angled&lt;p&gt;
 <pinref part="C5V" gate="G$1" pin="-"/>
 <pinref part="GND4" gate="1" pin="GND"/>
 <wire x1="157.48" y1="-7.62" x2="157.48" y2="-10.16" width="0.2032" layer="91"/>
-</segment>
-<segment>
-<pinref part="U1" gate="G$1" pin="GND"/>
-<pinref part="GND7" gate="1" pin="GND"/>
-<wire x1="121.92" y1="50.8" x2="116.84" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="116.84" y1="50.8" x2="116.84" y2="43.18" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND2" gate="1" pin="GND"/>
