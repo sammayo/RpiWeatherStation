@@ -4,3 +4,4 @@ RpiWeatherStation.sublime-workspace
 weatherstation.sublime-project
 weatherstation.sublime-workspace
 *.pyc
+.DS_Store
