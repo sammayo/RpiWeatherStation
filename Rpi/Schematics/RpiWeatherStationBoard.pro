@@ -1,27 +1,25 @@
 EAGLE AutoRouter Statistics:
 
-Job           : /Users/Sam/Projects/RpiWeatherStation/Rpi/Schematics/RpiWeatherStationBoard.brd
+Job           : /home/petr/Projects/sam/RpiWeatherStation/Rpi/Schematics/RpiWeatherStationBoard.brd
 
-Start at      : 21:01:27 (5/12/15)
-End at        : 21:01:31 (5/12/15)
-Elapsed time  : 00:00:02
+Start at      : 17:12:01 (5/15/15)
+End at        : 17:12:02 (5/15/15)
+Elapsed time  : 00:00:01
 
-Signals       :     8   RoutingGrid: 9 mil  Layers: 1
-Connections   :    19   predefined:  17 ( 0 Vias )
+Signals       :     8   RoutingGrid: 50 mil  Layers: 2
+Connections   :    19   predefined:  0 ( 0 Vias )
 
-Router memory :   110376
+Router memory :   9212
 
-Job has been interrupted!
+Passname          :    Busses     Route Optimize1 Optimize2 Optimize3 Optimize4
 
-Passname          : TopRouter     Route Optimize1 Optimize2
+Time per pass     :  00:00:00  00:00:00  00:00:01  00:00:00  00:00:00  00:00:00
+Number of Ripups  :         0         0         0         0         0         0
+max. Level        :         0         0         0         0         0         0
+max. Total        :         0         0         0         0         0         0
 
-Time per pass     :  00:00:02  00:00:00  00:00:00  00:00:00
-Number of Ripups  :         0         0         0         0
-max. Level        :         0         0         0         0
-max. Total        :         0         0         0         0
-
-Routed            :         0         2         2         2
-Vias              :         0         0         0         0
-Resolution        :    89.5 %   100.0 %   100.0 %   100.0 %
+Routed            :         5        19        19        19        19        19
+Vias              :         0         5         1         0         0         0
+Resolution        :    26.3 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %
 
 Final             : 100.0% finished

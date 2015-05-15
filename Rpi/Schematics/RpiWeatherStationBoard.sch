@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.2.0">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -4093,7 +4093,7 @@ W = angled&lt;p&gt;
 <part name="R1" library="rcl" deviceset="R-US_" device="0207/10" value="4.7K"/>
 <part name="SUPPLY3" library="SparkFun-Aesthetics" deviceset="3.3V" device=""/>
 <part name="SV2" library="con-lstb" deviceset="MA05-1" device=""/>
-<part name="GND2" library="SparkFun" deviceset="GND" device=""/>
+<part name="GND1" library="SparkFun" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4115,7 +4115,7 @@ W = angled&lt;p&gt;
 <instance part="R1" gate="G$1" x="111.76" y="73.66" rot="R90"/>
 <instance part="SUPPLY3" gate="G$1" x="88.9" y="83.82" rot="R180"/>
 <instance part="SV2" gate="G$1" x="101.6" y="91.44" rot="R180"/>
-<instance part="GND2" gate="1" x="81.28" y="81.28"/>
+<instance part="GND1" gate="1" x="81.28" y="81.28"/>
 </instances>
 <busses>
 </busses>
@@ -4160,10 +4160,10 @@ W = angled&lt;p&gt;
 <wire x1="157.48" y1="-7.62" x2="157.48" y2="-10.16" width="0.2032" layer="91"/>
 </segment>
 <segment>
-<pinref part="GND2" gate="1" pin="GND"/>
-<wire x1="81.28" y1="83.82" x2="81.28" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="SV2" gate="G$1" pin="3"/>
-<wire x1="81.28" y1="91.44" x2="93.98" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="91.44" x2="81.28" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="91.44" x2="81.28" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="GND1" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="5V" class="0">
