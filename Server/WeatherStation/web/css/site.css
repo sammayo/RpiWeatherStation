@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+    background-image: url("../images/bg-optimized.jpg");
 }
 
 .wrap {
@@ -19,16 +20,6 @@ body {
     background-color: #f5f5f5;
     border-top: 1px solid #ddd;
     padding-top: 20px;
-}
-
-.jumbotron {
-    text-align: center;
-    background-color: transparent;
-}
-
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
 }
 
 .not-set {
@@ -88,4 +79,28 @@ a.desc:after {
     border-left: 3px solid #eed3d7;
     padding: 10px 20px;
     margin: 0 0 15px 0;
+}
+
+.data-table {
+    width:1000px;
+    margin:auto;
+    color:white;
+}
+
+.data-graph {
+    width:1000px;
+    height:400px;
+    margin:auto;
+    color:white;
+}
+
+.jqplot-title {
+    font-size: 2em;
+}
+
+.page-title {
+    font-size: 3em;
+    color: white;
+    text-align: center;
+    margin-bottom: 1em;
 }
